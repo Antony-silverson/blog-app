@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= user.username %> | Profile</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    body {
+  background: url("https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1600&q=80")
+    no-repeat center center/cover;
+  background-size: cover;
+  color: black;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 60px auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      color: #ffce00;
+    }
+
+    .logout-btn {
+      background: #ff3b3b;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .logout-btn:hover {
+      background: #ff5e5e;
+      transform: scale(1.05);
+    }
+
+    .user-info {
+      margin-top: 30px;
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .user-info h2 {
+      color: #ffce00;
+      margin-bottom: 10px;
+    }
+
+    .user-info p {
+      color: black;
+    }
+
+    .blog-section {
+      margin-top: 40px;
+    }
+
+    .blog-card {
+      background: rgba(255,255,255,0.08);
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .blog-card h3 {
+      color: #ffce00;
+      margin-bottom: 10px;
+    }
+
+    .blog-card small {
+      color: #bbb;
+    }
+
+    .actions {
+      margin-top: 15px;
+    }
+
+    .actions a, .actions form button {
+      display: inline-block;
+      background: #00c2ff;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 14px;
+      text-decoration: none;
+      margin-right: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .actions a:hover, .actions form button:hover {
+      background: #00e1ff;
+      transform: scale(1.05);
+    }
+
+    .actions form {
+      display: inline;
+    }
+
+    .no-blogs {
+      color: black;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .new-blog-btn {
+      display: inline-block;
+      background: #ffce00;
+      color: #000;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      margin-bottom: 20px;
+      transition: 0.3s;
+    }
+
+    .new-blog-btn:hover {
+      background: #ffe44d;
+      transform: scale(1.05);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Welcome, <%= user.username %>!</h1>
+      <form action="/logout" method="GET">
+        <button type="submit" class="logout-btn">Logout</button>
+      </form>
+    </header>
+
+    <div class="user-info">
+      <h2>Your Profile</h2>
+      <p><strong>Username:</strong> <%= user.username %></p>
+      <p><strong>Email:</strong> <%= user.email %></p>
+      <a href="/new" class="new-blog-btn">New Blog</a>
+    </div>
+
+    <div class="blog-section">
+      <h2>Your Blogs</h2>
+
+      <% if (blogs && blogs.length > 0) { %>
+        <% blogs.forEach(blog => { %>
+          <div class="blog-card">
+            <h3><%= blog.title %></h3>
+            <p><%= blog.content.length > 200 ? blog.content.substring(0, 200) + "..." : blog.content %></p>
+            <small>Posted on: <%= blog.date.toDateString() %></small>
+            
+            <div class="actions">
+              <a href="/edit-blog/<%= blog._id %>">Edit</a>
+              <form action="/delete-blog/<%= blog._id %>?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit"> Delete</button>
+              </form>
+            </div>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p class="no-blogs">You haven’t posted any blogs yet.</p>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>

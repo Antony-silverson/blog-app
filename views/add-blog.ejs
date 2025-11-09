@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Add New Blog | My Blog</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: blue;
+      margin: 0;
+      padding: 0;
+     background: url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80")
+    no-repeat center center/cover;
+      background-size: cover;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 700px;
+      margin: 60px auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      text-align: center;
+      color: #f6fa04;
+      margin-bottom: 25px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.2);
+      color: black;
+      outline: none;
+      resize: none;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: black;
+    }
+
+    textarea {
+      height: 180px;
+    }
+
+    button {
+      background: #ffce00;
+      color: #000;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #4f95b6;
+      transform: scale(1.05);
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 20px;
+      color: #fa1201;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .back-btn:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1> Create a New Blog</h1>
+    <form action="/add" method="POST">
+      <label for="title">Blog Title</label>
+      <input type="text" id="title" name="title" placeholder="Enter your blog title" required />
+
+      <label for="content">Content</label>
+      <textarea id="content" name="content" placeholder="Write your blog content here..." required></textarea>
+
+      <button type="submit">Publish Blog </button>
+    </form>
+
+    <a href="/" class="back-btn">Back to Home</a>
+  </div>
+</body>
+</html>
