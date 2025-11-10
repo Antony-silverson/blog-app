@@ -1,0 +1,27 @@
+# Exported from Render on 2025-11-10T11:02:22Z
+version: "1"
+projects:
+- name: My project
+  environments:
+  - name: Production
+    services:
+    - type: web
+      name: blog_app
+      runtime: node
+      repo: https://github.com/Antony-silverson/blog-app
+      plan: free
+      envVars:
+      - key: EMAIL_PASS
+        sync: false
+      - key: EMAIL_USER
+        sync: false
+      - key: SESSION_SECRET
+        sync: false
+      - key: MONGO_URI
+        sync: false
+      - key: PORT
+        sync: false
+      region: oregon
+      buildCommand: npm install
+      startCommand: node server.js
+      autoDeployTrigger: commit
