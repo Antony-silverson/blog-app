@@ -12,15 +12,15 @@ projects:
       plan: free
       envVars:
       - key: EMAIL_PASS
-        sync: blogapp@1234
+        sync: true
       - key: EMAIL_USER
-        sync: antonysilverson34@gmail.com
+        sync: true
       - key: SESSION_SECRET
-        sync: blog1234
+        sync: true
       - key: MONGO_URI
-        sync: mongodb://127.0.0.1:27017/blogApp
+        sync: true
       - key: PORT
-        sync: 3000
+        sync: true
       region: oregon
       buildCommand: npm install
       startCommand: node server.js
