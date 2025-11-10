@@ -1,4 +1,4 @@
-My Blog App
+#My Blog App
 A simple and elegant full-stack Blog Application built using Node.js, Express, MongoDB, and EJS.
 Users can sign up, log in, create, edit, and delete blog posts with secure authentication.
 
